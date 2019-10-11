@@ -53,6 +53,6 @@ public class SimpleItem implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("SimpleItem [id = %d, title = %s, price = %d]");
+        return String.format("SimpleItem [id = %d, title = %s, price = %d]", id, title, price);
     }
 }

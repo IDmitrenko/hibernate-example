@@ -12,7 +12,7 @@ public class CrudApp {
         Long maxId = null;
 
         SessionFactory factory = new Configuration()
-                .configure("resources/hibernate.cfg.xml")
+                .configure("hibernate.cfg.xml")
                 .buildSessionFactory();
 
         Session session = null;
@@ -20,7 +20,7 @@ public class CrudApp {
             // запись
             session = factory.getCurrentSession();
             session.beginTransaction();
-            SimpleItem newSimpleItem = new SimpleItem("Chair", 1000);
+            SimpleItem newSimpleItem = new SimpleItem("Dragon statue", 100000);
             session.save(newSimpleItem);
             session.getTransaction().commit();
 
@@ -49,6 +49,11 @@ public class CrudApp {
 
         } catch (Exception ex) {
             ex.printStackTrace();
+        } finally {
+            factory.close();
+            if (session != null) {
+                session.close();
+            }
         }
     }
 }
